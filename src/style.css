@@ -1,11 +1,61 @@
+@font-face {
+  font-family: ChakraPetch;
+  src: url(resources/fonts/ChakraPetch-Medium.ttf);
+}
+
+@font-face {
+  font-family: ChakraPetch-bold;
+  src: url(resources/fonts/ChakraPetch-Bold.ttf);
+}
+
+@font-face {
+  font-family: DoHyeon;
+  src: url(resources/fonts/DoHyeon-Regular.ttf);
+}
+
+
 * {
   margin: 0;
   border: 0;
   padding: 0;
 }
 
+body {
+  overflow: hidden;
+  font-family: ChakraPetch;
+}
+
 canvas {
   position: fixed;
   top: 0;
   left: 0;
+}
+
+main {
+  position: relative;
+  height: 100vh;
+}
+
+.panel {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  position: absolute;
+  top: 50%;
+  left: 65%;
+  transform: translate(-50%, -50%);
+  transition: opacity 0.3s ease-out 0.1s;
+  opacity: 0;
+}
+
+.panelContent {
+  color: white;
+  background-color: rgba(62, 62, 62, 0.5);
+  border: 2px solid black;
+  border-radius: 20px;
+}
+
+.nextButton {
+  border-radius: 50%;
+  padding: 5px 5px;
 }

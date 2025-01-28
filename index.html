@@ -7,13 +7,75 @@
     <link rel="stylesheet" href="src/style.css">
   </head>
   <body>
-    <canvas id="bg">
-      
-    </canvas>
+    <canvas id="bg"></canvas>
 
-    <div class="panel">
-      
+    <main id="mainContent">
+
+      <button id="move">Move rocket</button>
+
+    <div class="panel" id="panel0" data-num="0">
+      <button class="prevButton">Previous</button>
+      <div class="panelContent">
+        <div class="panel-0-page">
+          <h1>About Me</h1>
+        </div>
+        <div class="panel-0-page">
+          <h1>Skills</h1>
+        </div>
+      </div>
+      <button class="nextButton">Next</button>
     </div>
+
+    <div class="panel" id="panel1" data-num="1">
+      <button class="prevButton">Previous</button>
+      <div class="panelContent">
+        <div class="panel-1-page">
+          <h1>Education</h1>
+        </div>
+      </div>
+      <button class="nextButton">Next</button>
+    </div>
+
+    <div class="panel" id="panel2" data-num="2">
+      <button class="prevButton">Previous</button>
+      <div class="panelContent">
+        <div class="panel-2-page">
+          <h1>Work Experience</h1>
+        </div>
+      </div>
+      <button class="nextButton">Next</button>
+    </div>
+
+    <div class="panel" id="panel3" data-num="3">
+      <button class="prevButton">Previous</button>
+      <div class="panelContent">
+        <div class="panel-3-page">
+          <h1>Projects</h1>
+        </div>
+      </div>
+      <button class="nextButton">Next</button>
+    </div>
+
+    <div class="panel" id="panel4" data-num="4">
+      <button class="prevButton">Previous</button>
+      <div class="panelContent">
+        <div class="panel-4-page">
+          <h1>Photos</h1>
+        </div>
+      </div>
+      <button class="nextButton">Next</button>
+    </div>
+
+    <div class="panel" id="panel5" data-num="5">
+      <div class="panelContent">
+        <div class="panel-5-page">
+          <h1>Contact Me</h1>
+        </div>
+      </div>
+    </div>
+
+    </main>
     <script type="module" src="/src/main.js"></script>
+    <script src="/src/panels.js"></script>
   </body>
 </html>
