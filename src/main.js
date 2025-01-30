@@ -9,6 +9,7 @@ import { element } from 'three/tsl';
 
 const modelURL = new URL('resources/models/rocket.glb', import.meta.url);
 
+
 // where all objects will go
 const scene = new THREE.Scene();
 
@@ -147,6 +148,8 @@ sphere4.position.set(-35, 0, -50);
 const sphere5 = new THREE.Mesh(sphereGeom, cyanMaterial);
 sphere5.position.set(35, 0, -50);
 
+const spheres = [sphere0, sphere1, sphere2, sphere3, sphere4, sphere5] // holds positions rocket can be in
+
 const sunGeom = new THREE.SphereGeometry(10);
 const sun = new THREE.Mesh(sunGeom, sunMaterial);
 scene.add(sun);
@@ -239,9 +242,50 @@ Array(250).fill().forEach(addStar);
 
 // HTML elements
 const panels = document.querySelectorAll(".panel");
-panels.forEach((element)=> {
-  console.log(element.id);
-})
+
+
+// add buttons
+const semiMajor = 150;
+const semiMinor = 150;
+const buttonCenterX = 0;
+const buttonCenterY = 0;
+
+let angleSum = Math.PI;
+
+let buttonPanel = document.getElementById("buttonPanel");
+
+let rocketButtonsList = [];
+
+for (let i = 0; i < 6; i++) {
+  const rocketButton = document.createElement("button");
+  if (i == 0) {
+    // set active class
+    rocketButton.classList.add("fa-solid","fa-rocket");
+  }
+
+  rocketButton.classList.add("rocket-button");
+
+  const rocketleft = buttonCenterX + semiMajor * Math.cos(angleSum);
+  const rockettop = buttonCenterY + semiMinor * Math.sin(angleSum);
+
+  rocketButton.style.left = `${rocketleft}px`;
+  rocketButton.style.top = `${rockettop}px`;
+
+  rocketButton.addEventListener("click", () => {
+    // get sphere at index
+    xTarget = spheres[i].position.x;
+    zTarget = spheres[i].position.z;
+    targetAngle = calculateTargetAngle(xTarget, zTarget);
+    isMoving = true; // Enable movement
+  });
+
+  rocketButtonsList.push(rocketButton);
+
+  buttonPanel.appendChild(rocketButton);
+
+  angleSum += (Math.PI * 2) / 6;
+}
+
 
 
 
@@ -258,8 +302,8 @@ let spinAngle = 0;
 
 const speed = 0.02; 
 
-// array approach
-const spheres = [sphere0, sphere1, sphere2, sphere3, sphere4, sphere5] // holds positions rocket can be in
+let xTarget = 0;
+let zTarget = 0;
 
 /*spheres.forEach((element, index) => {
   const vector = element.position.clone(); // clone position of mesh
@@ -322,11 +366,11 @@ function calculateTargetAngle(targetX, targetZ) {
   return Math.atan2(targetZ - centerZ, targetX - centerX);
 }
 
-document.getElementById("move").addEventListener("click", () => {
+/**document.getElementById("move").addEventListener("click", () => {
   // Calculate the target angle for the desired location
   targetAngle = calculateTargetAngle(-35, -50);
   isMoving = true; // Enable movement
-});
+});**/
 
 function animate() {
   requestAnimationFrame(animate);
@@ -346,8 +390,8 @@ function animate() {
 
     // Check if rocket is close to the target position
     if (
-      floatInRange(rocket.position.x, -35 - 2, -35 + 2) &&
-      floatInRange(rocket.position.z, -50 - 2, -50 + 2)
+      floatInRange(rocket.position.x, xTarget - 2, xTarget + 2) &&
+      floatInRange(rocket.position.z, zTarget - 2, zTarget + 2)
     ) {
       isMoving = false; // Stop movement
       console.log("Destination reached!");
@@ -419,11 +463,12 @@ function animate() {
       // turn on light at sphere
 
       // display div
-      panels[index].style.opacity = "1";
-
+      panels[index].classList.add("active");
+      rocketButtonsList[index].classList.add("fa-solid","fa-rocket");
     }
     else {
-      panels[index].style.opacity = "0";
+      panels[index].classList.remove("active");
+      rocketButtonsList[index].classList.remove("fa-solid","fa-rocket");
     }
   });
 

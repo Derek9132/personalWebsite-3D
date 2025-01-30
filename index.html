@@ -5,77 +5,85 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Derek's Portfolio Site</title>
     <link rel="stylesheet" href="src/style.css">
+    <script src="https://kit.fontawesome.com/f733144513.js" crossorigin="anonymous"></script>
   </head>
   <body>
     <canvas id="bg"></canvas>
 
-    <main id="mainContent">
+    <main>
 
-      <button id="move">Move rocket</button>
+    <div id="buttonPanel">
+      <!--<button id="move">Move rocket</button>-->
+    </div>
 
     <div class="panel" id="panel0" data-num="0">
-      <button class="prevButton">Previous</button>
+      <button class="prevButton fa-solid fa-angles-left"></button>
       <div class="panelContent">
-        <div class="panel-0-page">
+        <div class="panelPage">
           <h1>About Me</h1>
         </div>
-        <div class="panel-0-page">
+        <div class="panelPage">
           <h1>Skills</h1>
         </div>
+        <div class="panelPage">
+          <h1>Links</h1>
+        </div>
       </div>
-      <button class="nextButton">Next</button>
+      <button class="nextButton fa-solid fa-angles-right"></button>
     </div>
 
     <div class="panel" id="panel1" data-num="1">
-      <button class="prevButton">Previous</button>
+      <button class="prevButton fa-solid fa-angles-left"></button>
       <div class="panelContent">
-        <div class="panel-1-page">
+        <div class="panelPage" >
           <h1>Education</h1>
         </div>
       </div>
-      <button class="nextButton">Next</button>
+      <button class="nextButton fa-solid fa-angles-right"></button>
     </div>
 
     <div class="panel" id="panel2" data-num="2">
-      <button class="prevButton">Previous</button>
+      <button class="prevButton fa-solid fa-angles-left"></button>
       <div class="panelContent">
-        <div class="panel-2-page">
+        <div class="panelPage">
           <h1>Work Experience</h1>
         </div>
       </div>
-      <button class="nextButton">Next</button>
+      <button class="nextButton fa-solid fa-angles-right"></button>
     </div>
 
     <div class="panel" id="panel3" data-num="3">
-      <button class="prevButton">Previous</button>
+      <button class="prevButton fa-solid fa-angles-left"></button>
       <div class="panelContent">
-        <div class="panel-3-page">
+        <div class="panelPage">
           <h1>Projects</h1>
         </div>
       </div>
-      <button class="nextButton">Next</button>
+      <button class="nextButton fa-solid fa-angles-right"></button>
     </div>
 
     <div class="panel" id="panel4" data-num="4">
-      <button class="prevButton">Previous</button>
+      <button class="prevButton fa-solid fa-angles-left"></button>
       <div class="panelContent">
-        <div class="panel-4-page">
+        <div class="panelPage">
           <h1>Photos</h1>
         </div>
       </div>
-      <button class="nextButton">Next</button>
+      <button class="nextButton fa-solid fa-angles-right"></button>
     </div>
 
     <div class="panel" id="panel5" data-num="5">
       <div class="panelContent">
-        <div class="panel-5-page">
+        <div class="panelPage">
           <h1>Contact Me</h1>
         </div>
       </div>
     </div>
 
     </main>
+
     <script type="module" src="/src/main.js"></script>
-    <script src="/src/panels.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="module" src="/src/panels.js"></script>
   </body>
 </html>

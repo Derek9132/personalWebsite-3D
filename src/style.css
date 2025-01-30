@@ -34,7 +34,9 @@ canvas {
 main {
   position: relative;
   height: 100vh;
+  width: 100vw;
 }
+
 
 .panel {
   display: flex;
@@ -44,8 +46,19 @@ main {
   top: 50%;
   left: 65%;
   transform: translate(-50%, -50%);
+  margin: 30px 30px;
   transition: opacity 0.3s ease-out 0.1s;
   opacity: 0;
+  pointer-events: none;
+}
+
+.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+button {
+  font-family: ChakraPetch;
 }
 
 .panelContent {
@@ -55,7 +68,35 @@ main {
   border-radius: 20px;
 }
 
+.panelPage {
+  display: none;
+}
+
 .nextButton {
   border-radius: 50%;
   padding: 5px 5px;
+}
+
+.prevButton {
+  border-radius: 50%;
+  padding: 5px 5px;
+}
+
+#buttonPanel {
+  position: absolute;
+  top: 300px;
+  left: 300px;
+}
+
+.rocket-button {
+  width: 30px;
+  height: 30px;
+  background-color: cyan;
+  position: absolute;
+  border-radius: 50%;
+  border: 2px solid white;
+}
+
+.rocket-button:hover {
+  background-color: rgb(1, 203, 203);
 }
