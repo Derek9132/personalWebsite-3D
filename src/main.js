@@ -1,4 +1,4 @@
-import { ThreeMFLoader } from 'three/examples/jsm/Addons.js';
+//import { EffectComposer, OutputPass, RenderPass, ThreeMFLoader, UnrealBloomPass } from 'three/examples/jsm/Addons.js';
 import { GLTFLoader } from 'three/examples/jsm/Addons.js';
 import './style.css';
 import * as THREE from 'three';
@@ -8,6 +8,15 @@ import { element } from 'three/tsl';
 
 
 const modelURL = new URL('resources/models/rocket.glb', import.meta.url);
+
+
+const loadingManager = new THREE.LoadingManager();
+
+document.getElementById("loadingScreen").style.display = "flex";
+
+loadingManager.onLoad = function() {
+  document.getElementById("loadingScreen").style.display = "none";
+}
 
 
 // where all objects will go
@@ -25,26 +34,30 @@ const renderer = new THREE.WebGLRenderer({
 
 });
 
-renderer.outputEncoding = THREE.sRGBEncoding;
+//renderer.outputEncoding = THREE.sRGBEncoding;
 renderer.toneMapping = THREE.ACESFilmicToneMapping;
 renderer.toneMappingExposure = 0.5;
+renderer.outputColorSpace = THREE.SRGBColorSpace;
+
+
 
 renderer.setPixelRatio(window.devicePixelRatio);
-renderer.setSize(window.innerWidth, window.innerHeight); // make full screen renderer
-camera.position.setZ(30); // move camera back, similar to person taking a step back
+renderer.setSize(window.innerWidth, window.innerHeight); 
+
+camera.position.setZ(30); 
 
 // load textures 
 //const manager = new THREE.LoadingManager();
 
-const textureLoader = new THREE.TextureLoader().load('/space.jpg');
+const textureLoader = new THREE.TextureLoader(loadingManager).load('/space.jpg');
 
-const asteroids = new THREE.TextureLoader().load('/asteroidBelt.png');
+const asteroids = new THREE.TextureLoader(loadingManager).load('/asteroidBelt.png');
 asteroids.colorSpace = THREE.SRGBColorSpace;
 
-const sunTexture = new THREE.TextureLoader().load('/sunTexture.jpg');
+const sunTexture = new THREE.TextureLoader(loadingManager).load('/sunTexture.jpg');
 sunTexture.colorSpace = THREE.SRGBColorSpace;
 
-const lightTexture = new THREE.TextureLoader().load('/lightSprite.png');
+const lightTexture = new THREE.TextureLoader(loadingManager).load('/lightSprite.png');
 lightTexture.colorSpace = THREE.SRGBColorSpace;
 
 scene.background = textureLoader;
@@ -57,6 +70,7 @@ scene.background = textureLoader;
 
 
 // Add light
+
 
 // for ring 1
 const point1 = new THREE.PointLight(0xffffff, 130, 0, 2);
@@ -95,13 +109,13 @@ const cameraHelper = new THREE.CameraHelper(camera);
 scene.add(point1, point2, point3, point4, point5, point6, ambient, sunPoint);
 
 // Add geometries: rocket, 1st ring (about), 2nd ring (work experience), 3rd ring (projects), 4th ring (skills), 5th ring (photos), 6th ring (contact)
-const loader = new GLTFLoader();
+const loader = new GLTFLoader(loadingManager);
 
 let rocket;
 loader.load(modelURL.href, function(gltf) {
   rocket = gltf.scene;
   rocket.rotateX(1.5708);
-  rocket.position.set(85,2,0);
+  rocket.position.set(85,2.5,0);
   //rocket.add(camera);
   scene.add(rocket);
   //camera.position.set(0, 0, -100);
@@ -117,7 +131,11 @@ const redMaterial = new THREE.MeshPhongMaterial({color: 0xff8282});
 const yellowMaterial = new THREE.MeshStandardMaterial({color: 0xfaeea0});
 const blackMaterial = new THREE.MeshPhongMaterial({color: 0x000000});
 const whiteMaterial = new THREE.MeshPhongMaterial({color: 0xffffff});
-const cyanMaterial = new THREE.MeshStandardMaterial({color: 0x2df5ff, roughness: 0});
+const cyanMaterial = new THREE.MeshStandardMaterial({
+  color: 0x2df5ff,  
+  emissive: 0x0000ff,  
+  emissiveIntensity: 2  
+});
 const silverMaterial = new THREE.MeshPhongMaterial({color: 0xdee7e7});
 const darkbMaterial = new THREE.MeshPhongMaterial({color: 0x093d8d});
 const sunMaterial = new THREE.MeshStandardMaterial({map: sunTexture});
@@ -126,38 +144,44 @@ const lightMaterial = new THREE.MeshStandardMaterial({map: lightTexture});
 // spheres
 const sphereGeom = new THREE.SphereGeometry(1);
 
-const sphere0 = new THREE.Mesh(sphereGeom, lightMaterial);
-const spot0 = new THREE.SpotLight(0xffffff, 150, 0, Math.PI/3)
-spot0.position.set(85, -3, 0);
-spot0.target.position.set(85, 0, 0);
-spot0.target.updateMatrixWorld();
+const sphere0 = new THREE.Mesh(sphereGeom, cyanMaterial);
+/*const pointSphere0 = new THREE.SpotLight(0xffffff, 200, 0, Math.PI/3)
+pointSphere0.position.set(85, 0, 0);*/
+sphere0.layers.set(4);
 sphere0.position.set(85, 0, 0);
 
 const sphere1 = new THREE.Mesh(sphereGeom, cyanMaterial);
+sphere1.layers.set(4);
 sphere1.position.set(35, 0, 50);
 
 const sphere2 = new THREE.Mesh(sphereGeom, cyanMaterial);
+sphere2.layers.set(4);
 sphere2.position.set(-35, 0, 50);
 
 const sphere3 = new THREE.Mesh(sphereGeom, cyanMaterial);
+sphere3.layers.set(4);
 sphere3.position.set(-85, 0, 0);
 
 const sphere4 = new THREE.Mesh(sphereGeom, cyanMaterial);
+sphere4.layers.set(4);
 sphere4.position.set(-35, 0, -50);
 
 const sphere5 = new THREE.Mesh(sphereGeom, cyanMaterial);
+sphere5.layers.set(4);
 sphere5.position.set(35, 0, -50);
 
 const spheres = [sphere0, sphere1, sphere2, sphere3, sphere4, sphere5] // holds positions rocket can be in
+
+camera.layers.enable(4);
 
 const sunGeom = new THREE.SphereGeometry(10);
 const sun = new THREE.Mesh(sunGeom, sunMaterial);
 scene.add(sun);
 
-const spotLightHelper = new THREE.SpotLightHelper(spot0);
+//const spotLightHelper = new THREE.SpotLightHelper(spot0);
 
 scene.add(sphere0, sphere1, sphere2, sphere3, sphere4, sphere5);
-scene.add(spot0, spotLightHelper);
+//scene.add(pointSphere0);
 
 const ring1Geom = new THREE.TorusGeometry(10,1.5, 18, 5);
 const ring11 = new THREE.Mesh(ring1Geom, silverMaterial);
@@ -276,7 +300,7 @@ for (let i = 0; i < 6; i++) {
     xTarget = spheres[i].position.x;
     zTarget = spheres[i].position.z;
     targetAngle = calculateTargetAngle(xTarget, zTarget);
-    isMoving = true; // Enable movement
+    isMoving = true; 
   });
 
   rocketButtonsList.push(rocketButton);
@@ -318,7 +342,7 @@ let zTarget = 0;
 
 });*/
 
-const spotlights = [spot0] // holds spotlights corresponding to positions
+//const spotlights = [spot0] // holds spotlights corresponding to positions
 
 // group approach: group spheres and spotlights into one, store in singular array
 
@@ -357,10 +381,6 @@ function floatInRange(value, min, max) {
   return false
 }
 
-function illuminateAndDisplay() {
-  // check rocket position
-
-}
 
 function calculateTargetAngle(targetX, targetZ) {
   return Math.atan2(targetZ - centerZ, targetX - centerX);
@@ -380,30 +400,27 @@ function animate() {
   //angle %= 2 * Math.PI;
 
   if (isMoving) {
-    // Increment the angle to move the rocket
-    angle += 0.02; // Adjust speed
+    angle += 0.02; 
     angle %= 2 * Math.PI;
 
-    // Update rocket position along the ellipse
     rocket.position.x = centerX + radiusX * Math.cos(angle);
     rocket.position.z = centerZ + radiusZ * Math.sin(angle);
 
-    // Check if rocket is close to the target position
     if (
       floatInRange(rocket.position.x, xTarget - 2, xTarget + 2) &&
       floatInRange(rocket.position.z, zTarget - 2, zTarget + 2)
     ) {
-      isMoving = false; // Stop movement
+      isMoving = false; 
       console.log("Destination reached!");
     }
   }
 
-  rocket.position.x = centerX + radiusX * Math.cos(angle); // X-coordinate
-  rocket.position.z = centerZ + radiusZ * Math.sin(angle); // Y-coordinate
+  rocket.position.x = centerX + radiusX * Math.cos(angle);
+  rocket.position.z = centerZ + radiusZ * Math.sin(angle);
 
   const dx = -radiusX * Math.sin(angle); 
   const dz = radiusZ * Math.cos(angle);  
-  const pathAngle = -Math.atan2(dx, dz); // Angle of the rocket along the path
+  const pathAngle = -Math.atan2(dx, dz); 
 
   // rotate rocket along path
   rocket.rotation.z = -Math.atan2(dx, dz); 

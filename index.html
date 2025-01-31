@@ -3,11 +3,18 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Derek's Portfolio Site</title>
+    <title>Derek's Space Adventure Portfolio</title>
     <link rel="stylesheet" href="src/style.css">
     <script src="https://kit.fontawesome.com/f733144513.js" crossorigin="anonymous"></script>
+    <script src='threex.volumetricspotlight.js'></script>
   </head>
   <body>
+
+    <div id="loadingScreen">
+      <img src="/src/resources/images/rocket.gif" alt="loading">
+      <p>Loading Scene, Hang Tight...</p>
+    </div>
+
     <canvas id="bg"></canvas>
 
     <main>
@@ -21,32 +28,55 @@
       <div class="panelContent">
         <div class="panelPage">
           <h1>About Me</h1>
+          <p>Hello! Welcome to my portfolio website. I'm Derek Kwon and I am a recent graduate from the College of 
+            William & Mary. I enjoy expressing myself and my imagination through code and regularly work on websites and 
+            games as passion projects. I'm currently actively looking for a full-time position as a full-stack web developer, 
+            data scientist, or cybersecurity engineer. 
+            <br><br>
+            I am fluent in English and Korean, and I am learning Japanese at a good pace (it's the easiest language for Korean 
+            speakers to learn). 
+          </p>
         </div>
         <div class="panelPage">
           <h1>Skills</h1>
         </div>
         <div class="panelPage">
           <h1>Links</h1>
+          <p>LinkedIn: </p>
+          <p>GitHub: </p>
         </div>
       </div>
       <button class="nextButton fa-solid fa-angles-right"></button>
     </div>
 
     <div class="panel" id="panel1" data-num="1">
-      <button class="prevButton fa-solid fa-angles-left"></button>
       <div class="panelContent">
         <div class="panelPage" >
           <h1>Education</h1>
+          <p>School: College of William & Mary</p>
+          <p>Dates: Jaunary 2022 - Jaunary 2025</p>
+          <p>Degree: Bachelor's in Science
+            <br>
+            Major: Computer Science
+            <br>
+            GPA: 3.60
+          </p>
+          <p>
+            Relevant Courses:<br>
+            <ul>
+              <li>CSCI 241 Data Structures</li>
+              <li>CSCI 301 Intro to Software Development</li>
+            </ul>
+          </p>
         </div>
       </div>
-      <button class="nextButton fa-solid fa-angles-right"></button>
     </div>
 
     <div class="panel" id="panel2" data-num="2">
       <button class="prevButton fa-solid fa-angles-left"></button>
       <div class="panelContent">
         <div class="panelPage">
-          <h1>Work Experience</h1>
+          <h1>Work Experience: Content Data Specialist Intern</h1>
         </div>
       </div>
       <button class="nextButton fa-solid fa-angles-right"></button>
