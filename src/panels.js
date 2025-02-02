@@ -9,8 +9,8 @@ $(function() {
         let next = current.next(".panelPage");
         console.log(current, next);
         if (next.length) {
-          current.hide();
-          next.show();
+            current.hide();
+            next.show();
         }
         else {
             console.log("error");

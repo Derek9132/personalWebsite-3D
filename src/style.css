@@ -37,6 +37,10 @@ main {
   width: 100vw;
 }
 
+a {
+  color: white;
+  text-decoration: none;
+}
 
 .panel {
   display: flex;
@@ -88,9 +92,13 @@ button {
 }
 
 .panelPage ul {
-  margin-left: 10px;
-  margin-right: 10px;
-  margin-bottom: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 20px;
+  list-style-position: inside;
+}
+
+.panelPage li {
   list-style-type: circle;
 }
 
@@ -160,4 +168,14 @@ button {
   color: white;
   font-size: 24px;
   z-index: 1000; /* Ensure it's on top */
+}
+
+.queryPanel {
+
+}
+
+@media (max-width: 750px) {
+  #buttonPanel {
+    display: none;
+  }
 }
