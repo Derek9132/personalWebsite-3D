@@ -267,6 +267,42 @@ Array(250).fill().forEach(addStar);
 // HTML elements
 const panels = document.querySelectorAll(".panel");
 
+/*function getOffset( el ) {
+  var rect = el.getBoundingClientRect();
+  return {
+      left: rect.left + window.scrollX,
+      top: rect.top + window.scrollY,
+      width: rect.width || el.offsetWidth,
+      height: rect.height || el.offsetHeight
+  };
+}*/
+
+/**function connect(div1, div2, color, thickness) { // draw a line connecting elements
+  var off1 = getOffset(div1);
+  var off2 = getOffset(div2);
+  // bottom right
+  var x1 = off1.left + off1.width;
+  var y1 = off1.top + off1.height;
+  // top right
+  var x2 = off2.left + off2.width;
+  var y2 = off2.top;
+  // distance
+  var length = Math.sqrt(((x2-x1) * (x2-x1)) + ((y2-y1) * (y2-y1)));
+  // center
+  var cx = ((x1 + x2) / 2) - (length / 2);
+  var cy = ((y1 + y2) / 2) - (thickness / 2);
+  // angle
+  var angle = Math.atan2((y1-y2),(x1-x2))*(180/Math.PI);
+  // make hr
+  //var htmlLine = "<div style='padding:0px; margin:0px; height:" + thickness + "px; background-color:" + color + "; line-height:1px; position:absolute; left:" + cx + "px; top:" + cy + "px; width:" + length + "px; -moz-transform:rotate(" + angle + "deg); -webkit-transform:rotate(" + angle + "deg); -o-transform:rotate(" + angle + "deg); -ms-transform:rotate(" + angle + "deg); transform:rotate(" + angle + "deg);'></div>";
+  var line = document.createElement("div");
+  line.setAttribute("style", "padding:0px; margin:0px; height:" + thickness + "px; background-color:" + color + "; line-height:1px; position:absolute; left:" + cx + "px; top:" + cy + "px; width:" + length + "px; -moz-transform:rotate(" + angle + "deg); -webkit-transform:rotate(" + angle + "deg); -o-transform:rotate(" + angle + "deg); -ms-transform:rotate(" + angle + "deg); transform:rotate(" + angle + "deg);")
+  //
+  // alert(htmlLine);
+  main.appendChild(line);
+}**/
+
+
 
 // add buttons
 const semiMajor = 150;
@@ -277,11 +313,42 @@ const buttonCenterY = 0;
 let angleSum = Math.PI;
 
 let buttonPanel = document.getElementById("buttonPanel");
+let main = document.querySelector("main");
 
 let rocketButtonsList = [];
 
+const svgns = "http://www.w3.org/2000/svg";
+
 for (let i = 0; i < 6; i++) {
   const rocketButton = document.createElement("button");
+
+  const lineTarget2 = angleSum + ((Math.PI * 2) / 6);
+  
+  let lineX1 = buttonCenterX + semiMajor * Math.cos(angleSum);
+  let lineY1 = buttonCenterY + semiMinor * Math.sin(angleSum);
+
+  let lineX2 = buttonCenterX + semiMajor * Math.cos(lineTarget2);
+  let lineY2 = buttonCenterY + semiMinor * Math.sin(lineTarget2);
+
+  let newLineSVG = document.createElement("svg");
+  let newLine = document.createElementNS(svgns, "line");
+
+  newLineSVG.setAttribute("width", "100px"); 
+  newLineSVG.setAttribute("height", "100px");
+  //newLineSVG.setAttribute("style", "position: absolute"); 
+
+  newLine.setAttribute("id", "line-0");
+  newLine.setAttribute('x1',`${lineX1}`);
+  newLine.setAttribute('y1',`${lineY1}`);
+  newLine.setAttribute('x2',`${lineX2}`);
+  newLine.setAttribute('y2',`${lineY2}`);
+  newLine.setAttribute("stroke", "white")
+  newLine.setAttribute("width", "100px");
+  newLine.setAttribute("height","100px");
+
+  newLineSVG.appendChild(newLine);
+  main.appendChild(newLineSVG);
+
   if (i == 0) {
     // set active class
     rocketButton.classList.add("fa-solid","fa-rocket");
@@ -310,7 +377,7 @@ for (let i = 0; i < 6; i++) {
   angleSum += (Math.PI * 2) / 6;
 }
 
-
+//connect(rocketButtonsList[0], rocketButtonsList[1], "white", "2px");
 
 
 
@@ -329,22 +396,9 @@ const speed = 0.02;
 let xTarget = 0;
 let zTarget = 0;
 
-/*spheres.forEach((element, index) => {
-  const vector = element.position.clone(); // clone position of mesh
-  vector.project(camera); // project / turn into normalized device coords (NDC)
-
-  // Convert NDC to screen coordinates
-  const x = (vector.x) * window.innerWidth;
-  const y = (1 - (vector.y)) * window.innerHeight;
-
-  panels[index].style.left = `${x}px`;
-  panels[index].style.top = `${y}px`;
-
-});*/
 
 //const spotlights = [spot0] // holds spotlights corresponding to positions
 
-// group approach: group spheres and spotlights into one, store in singular array
 
 window.addEventListener("wheel", (event) => {
   if (event.deltaY < 0) // scroll up, move forward 
@@ -386,12 +440,6 @@ function calculateTargetAngle(targetX, targetZ) {
   return Math.atan2(targetZ - centerZ, targetX - centerX);
 }
 
-/**document.getElementById("move").addEventListener("click", () => {
-  // Calculate the target angle for the desired location
-  targetAngle = calculateTargetAngle(-35, -50);
-  isMoving = true; // Enable movement
-});**/
-
 function animate() {
   requestAnimationFrame(animate);
 
@@ -428,17 +476,14 @@ function animate() {
   const pathQuaternion = new THREE.Quaternion();
   pathQuaternion.setFromAxisAngle(new THREE.Vector3(0, 0, 1), pathAngle);
 
-  // Create a quaternion for the rocket's initial X-axis rotation (90 degrees)
   const initialQuaternion = new THREE.Quaternion();
-  initialQuaternion.setFromAxisAngle(new THREE.Vector3(1, 0, 0), Math.PI / 2); // 90 degrees
+  initialQuaternion.setFromAxisAngle(new THREE.Vector3(1, 0, 0), Math.PI / 2); 
 
-  // Create a quaternion for the spin around the rocket's local Y-axis
   const spinQuaternion = new THREE.Quaternion();
-  spinQuaternion.setFromAxisAngle(new THREE.Vector3(0, 1, 0), spinAngle); // Incremental spin
+  spinQuaternion.setFromAxisAngle(new THREE.Vector3(0, 1, 0), spinAngle); 
 
   spinAngle += 0.02;
 
-  // Combine the quaternions: initial rotation → path alignment → spin
   rocket.quaternion.copy(initialQuaternion);
   rocket.quaternion.multiply(pathQuaternion);
   rocket.quaternion.multiply(spinQuaternion);
@@ -467,12 +512,23 @@ function animate() {
   ring51.rotation.z = angle * 2;
   ring52.rotation.z = angle * 2 + 3.15;
 
-  ring61.rotation.y = angle * 2;
-  ring62.rotation.x = angle * 2;
-
   ring11.rotation.z = angle * 2;
   ring12.rotation.z = -angle * 2;
   ring13.rotation.z = -angle * 2;
+
+  const xQuaternion = new THREE.Quaternion();
+  xQuaternion.setFromAxisAngle(new THREE.Vector3(1,0,0), angle * 2);
+
+  const x2Quaternion = new THREE.Quaternion();
+  x2Quaternion.setFromAxisAngle(new THREE.Vector3(1,0,0), -angle * 3);
+
+  const yQuaternion = new THREE.Quaternion();
+  yQuaternion.setFromAxisAngle(new THREE.Vector3(0,1,0), angle);
+
+  ring61.quaternion.copy(xQuaternion);
+  ring62.quaternion.copy(x2Quaternion);
+  ring62.quaternion.multiply(yQuaternion);
+  ring61.quaternion.multiply(yQuaternion);
 
   // check if rocket is near a sphere
   spheres.forEach((element, index) => {

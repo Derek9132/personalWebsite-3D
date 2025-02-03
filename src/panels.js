@@ -27,8 +27,8 @@ $(function() {
     });
 
     $(".panelContent").each(function() {
-        $(this).children(".panelPage").hide();  // Hide all pages in each panel
-        $(this).children(".panelPage:first").show();  // Hide all pages in each panel
+        $(this).children(".panelPage").hide();  
+        $(this).children(".panelPage:first").show();  
     });
 
 });
