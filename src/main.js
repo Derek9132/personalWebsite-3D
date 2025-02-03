@@ -16,6 +16,7 @@ document.getElementById("loadingScreen").style.display = "flex";
 
 loadingManager.onLoad = function() {
   document.getElementById("loadingScreen").style.display = "none";
+  animate();
 }
 
 
@@ -549,6 +550,5 @@ function animate() {
 }
 
 
-animate();
 
 
