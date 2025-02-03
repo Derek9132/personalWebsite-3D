@@ -1,0 +1,137 @@
+2:37:08 AM: build-image version: 6724b7f630462a3bda7629c0c4b9c485399606e3 (noble)
+2:37:08 AM: buildbot version: 927e75ede366e8085d4e00cdba5fd6dcec09e3f4
+2:37:09 AM: Fetching cached dependencies
+2:37:09 AM: Starting to download cache of 484.7MB
+2:37:11 AM: Finished downloading cache in 1.958s
+2:37:11 AM: Starting to extract cache
+2:37:26 AM: Finished extracting cache in 15.456s
+2:37:26 AM: Finished fetching cache in 17.474s
+2:37:26 AM: Starting to prepare the repo for build
+2:37:26 AM: Preparing Git Reference refs/heads/main
+2:37:29 AM: Starting to install dependencies
+2:37:29 AM: Started restoring cached mise cache
+2:37:30 AM: Finished restoring cached mise cache
+2:37:30 AM: Python version set to 3.13.1
+2:37:30 AM: Ruby version set to 2.7.2
+2:37:31 AM: Go version set to 1.19
+2:37:31 AM: Using PHP version 8.3
+2:37:32 AM: Started restoring cached Node.js version
+2:37:35 AM: Finished restoring cached Node.js version
+2:37:35 AM: v18.20.6 is already installed.
+2:37:35 AM: Now using node v18.20.6 (npm v10.8.2)
+2:37:35 AM: Enabling Node.js Corepack
+2:37:35 AM: Started restoring cached build plugins
+2:37:35 AM: Finished restoring cached build plugins
+2:37:35 AM: Started restoring cached corepack dependencies
+2:37:35 AM: Finished restoring cached corepack dependencies
+2:37:35 AM: No npm workspaces detected
+2:37:35 AM: Started restoring cached node modules
+2:37:35 AM: Finished restoring cached node modules
+2:37:36 AM: Installing npm packages using npm version 10.8.2
+2:37:36 AM: up to date, audited 14 packages in 497ms
+2:37:36 AM: 3 packages are looking for funding
+2:37:36 AM:   run `npm fund` for details
+2:37:36 AM: found 0 vulnerabilities
+2:37:36 AM: npm packages installed
+2:37:36 AM: Successfully installed dependencies
+2:37:37 AM: Starting build script
+2:37:37 AM: Detected 1 framework(s)
+2:37:37 AM: "vite" at version "6.0.11"
+2:37:37 AM: Section completed: initializing
+2:37:39 AM: ​
+2:37:39 AM: Netlify Build                                                 
+2:37:39 AM: ────────────────────────────────────────────────────────────────
+2:37:39 AM: ​
+2:37:39 AM: ❯ Version
+2:37:39 AM:   @netlify/build 29.58.8
+2:37:39 AM: ​
+2:37:39 AM: ❯ Flags
+2:37:39 AM:   accountId: 672541fc999e8da8de55de50
+2:37:39 AM:   baseRelDir: true
+2:37:39 AM:   buildId: 67a07212cf498e0008146f31
+2:37:39 AM:   deployId: 67a07213cf498e0008146f33
+2:37:39 AM: ​
+2:37:39 AM: ❯ Current directory
+2:37:39 AM:   /opt/build/repo
+2:37:39 AM: ​
+2:37:39 AM: ❯ Config file
+2:37:39 AM:   No config file was defined: using default values.
+2:37:39 AM: ​
+2:37:39 AM: ❯ Context
+2:37:39 AM:   production
+2:37:39 AM: ​
+2:37:39 AM: Build command from Netlify app                                
+2:37:39 AM: ────────────────────────────────────────────────────────────────
+2:37:39 AM: ​
+2:37:39 AM: $ npm run build
+2:37:39 AM: > vite-project@0.0.0 build
+2:37:39 AM: > vite build
+2:37:39 AM: vite v6.0.11 building for production...
+2:37:39 AM: transforming...
+2:37:41 AM: node_modules/three/examples/jsm/libs/lottie_canvas.module.js (13973:30): Use of eval in "node_modules/three/examples/jsm/libs/lottie_canvas.module.js" is strongly discouraged as it poses security risks and may cause issues with minification.
+2:37:41 AM: node_modules/three/examples/jsm/libs/chevrotain.module.min.js (2:7044): Use of eval in "node_modules/three/examples/jsm/libs/chevrotain.module.min.js" is strongly discouraged as it poses security risks and may cause issues with minification.
+2:37:41 AM: ✓ 291 modules transformed.
+2:37:42 AM: rendering chunks...
+2:37:42 AM: computing gzip size...
+2:37:42 AM: dist/index.html                                4.67 kB │ gzip:   1.48 kB
+2:37:42 AM: dist/assets/rocket-CiWYOJYu.gif               23.13 kB
+2:37:42 AM: dist/assets/rocket-CiBSRe4B.glb               31.76 kB
+2:37:42 AM: dist/assets/ChakraPetch-Bold-s-gf-5Hp.ttf     71.44 kB
+2:37:42 AM: dist/assets/ChakraPetch-Medium-RTBhLdga.ttf   71.61 kB
+2:37:42 AM: dist/assets/DoHyeon-Regular-kM-mH4uO.ttf     858.84 kB
+2:37:42 AM: dist/assets/index-DyAMWe16.css                 1.83 kB │ gzip:   0.75 kB
+2:37:42 AM: dist/assets/index-C2tyM4tw.js                673.75 kB │ gzip: 181.77 kB
+2:37:42 AM: 
+2:37:42 AM: (!) Some chunks are larger than 500 kB after minification. Consider:
+2:37:42 AM: - Using dynamic import() to code-split the application
+2:37:42 AM: - Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+2:37:42 AM: - Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+2:37:42 AM: ✓ built in 3.05s
+2:37:42 AM: ​
+2:37:42 AM: (build.command completed in 3.3s)
+2:37:42 AM: ​
+2:37:42 AM: Deploy site                                                   
+2:37:42 AM: ────────────────────────────────────────────────────────────────
+2:37:42 AM: ​
+2:37:42 AM: Starting to deploy site from 'dist'
+2:37:42 AM: Calculating files to upload
+2:37:42 AM: 3 new file(s) to upload
+2:37:42 AM: 0 new function(s) to upload
+2:37:43 AM: Starting post processing
+2:37:43 AM: Skipping form detection
+2:37:43 AM: Post processing - header rules
+2:37:43 AM: Post processing - redirect rules
+2:37:43 AM: Post processing done
+2:37:43 AM: Section completed: postprocessing
+2:37:43 AM: Site is live ✨
+2:37:43 AM: Section completed: deploying
+2:37:43 AM: Site deploy was successfully initiated
+2:37:43 AM: ​
+2:37:43 AM: (Deploy site completed in 510ms)
+2:37:43 AM: ​
+2:37:43 AM: Netlify Build Complete                                        
+2:37:43 AM: ────────────────────────────────────────────────────────────────
+2:37:43 AM: ​
+2:37:43 AM: (Netlify Build completed in 3.9s)
+2:37:43 AM: Caching artifacts
+2:37:43 AM: Started saving node modules
+2:37:43 AM: Finished saving node modules
+2:37:43 AM: Started saving build plugins
+2:37:43 AM: Finished saving build plugins
+2:37:43 AM: Started saving mise cache
+2:37:43 AM: Finished saving mise cache
+2:37:43 AM: Started saving corepack cache
+2:37:43 AM: Finished saving corepack cache
+2:37:43 AM: Started saving emacs cask dependencies
+2:37:43 AM: Finished saving emacs cask dependencies
+2:37:43 AM: Started saving maven dependencies
+2:37:43 AM: Finished saving maven dependencies
+2:37:43 AM: Started saving boot dependencies
+2:37:43 AM: Finished saving boot dependencies
+2:37:43 AM: Started saving rust rustup cache
+2:37:43 AM: Finished saving rust rustup cache
+2:37:43 AM: Build script success
+2:37:43 AM: Section completed: building
+2:38:30 AM: Uploading Cache of size 485.2MB
+2:38:31 AM: Section completed: cleanup
+2:38:31 AM: Finished processing build request in 1m22.581s
