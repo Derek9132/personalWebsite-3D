@@ -240,7 +240,7 @@ textarea {
   }
 }
 
-@media (max-width: 300px) {
+@media (max-width: 100px) {
   .panel {
     display: none;
   }
