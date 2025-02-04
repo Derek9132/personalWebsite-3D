@@ -418,24 +418,28 @@ window.addEventListener("wheel", (event) => {
     angle %= 2 * Math.PI;
   }
 
-})
-
-let ts;
-
-
-window.addEventListener('touchstart', function (e){
-  ts = e.originalEvent.touches[0].clientY;
 });
 
-window.addEventListener('touchmove', function (e){
-  var te = e.originalEvent.changedTouches[0].clientY;
-  if(ts > te+5){
-    angle += speed;
-    angle %= 2 * Math.PI;
-  }else if(ts < te-5){
-    angle -= speed;
-    angle %= 2 * Math.PI;
+let startY = 0;
+
+
+window.addEventListener("touchstart", (event) => {
+  startY = event.touches[0].clientY; // Store initial touch position
+});
+
+window.addEventListener("touchmove", (event) => {
+  let currentY = event.touches[0].clientY; // Get new touch position
+  let deltaY = startY - currentY; // Calculate movement direction
+
+  if (deltaY > 0) { // Swipe up → Move forward
+      angle += speed;
+  } else if (deltaY < 0) { // Swipe down → Move backward
+      angle -= speed;
   }
+  
+  angle %= 2 * Math.PI;
+
+  startY = currentY; // Update for continuous movement
 });
 
 window.addEventListener('resize', () => {
@@ -443,7 +447,7 @@ window.addEventListener('resize', () => {
   camera.updateProjectionMatrix()
 
   renderer.setSize(window.innerWidth, window.innerHeight);
-})
+});
 
 
 let isMoving = false;
