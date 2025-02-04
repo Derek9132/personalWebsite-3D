@@ -383,6 +383,18 @@ panels.forEach((element) => {
   });
 });
 
+panels.forEach((element) => {
+  element.addEventListener("touchmove", (event) => {
+    event.stopPropagation();
+  });
+});
+
+panels.forEach((element) => {
+  element.addEventListener("touchstart", (event) => {
+    event.stopPropagation();
+  });
+});
+
 //connect(rocketButtonsList[0], rocketButtonsList[1], "white", "2px");
 
 
