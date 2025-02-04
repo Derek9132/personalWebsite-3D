@@ -422,11 +422,12 @@ window.addEventListener("wheel", (event) => {
 
 let ts;
 
+
 window.addEventListener('touchstart', function (e){
   ts = e.originalEvent.touches[0].clientY;
 });
 
-window.addEventListener('touchend', function (e){
+window.addEventListener('touchmove', function (e){
   var te = e.originalEvent.changedTouches[0].clientY;
   if(ts > te+5){
     angle += speed;
