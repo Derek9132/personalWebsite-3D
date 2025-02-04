@@ -240,9 +240,18 @@ textarea {
   }
 }
 
-@media (max-width: 100px) {
+@media (max-width: 500px) {
   .panel {
-    display: none;
-    color: red;
+    position: absolute;
+    bottom: 0;
+    gap: 0;
+  }
+
+  .prevButton {
+    border-radius: 0%;
+  }
+
+  .nextButton {
+    border-radius: 0;
   }
 }
