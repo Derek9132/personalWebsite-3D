@@ -420,6 +420,23 @@ window.addEventListener("wheel", (event) => {
 
 })
 
+let ts;
+
+window.addEventListener('touchstart', function (e){
+  ts = e.originalEvent.touches[0].clientY;
+});
+
+window.addEventListener('touchend', function (e){
+  var te = e.originalEvent.changedTouches[0].clientY;
+  if(ts > te+5){
+    angle += speed;
+    angle %= 2 * Math.PI;
+  }else if(ts < te-5){
+    angle -= speed;
+    angle %= 2 * Math.PI;
+  }
+});
+
 window.addEventListener('resize', () => {
   camera.aspect = window.innerWidth/window.innerHeight;
   camera.updateProjectionMatrix()

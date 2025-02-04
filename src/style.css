@@ -20,6 +20,12 @@
   padding: 0;
 }
 
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%; /* Ensure the full height is used */
+}
+
 body {
   overflow: hidden;
   font-family: ChakraPetch;
@@ -244,14 +250,46 @@ textarea {
   .panel {
     position: absolute;
     bottom: 0;
+    left: 50%;
+    top: 68vh;
+    width: 100vw;
+    height: 200px;
     gap: 0;
+    margin: 0 0;
+    padding: 0 0;
+    border: 0 0;
+    transform: translateX(-50%); /* Ensure it's truly centered */
   }
+
+  .panelContent {
+    height: 100%;
+    border-radius: 0;
+    border: 0px solid transparent;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    transform: none;
+    width: 100%;
+    margin: 0 0;
+    padding: 0 0;
+    border: 0 0;
+  }
+
 
   .prevButton {
     border-radius: 0%;
+    height: 100%;
+    border: 1px solid black;
+    margin: 0 0;
+    padding: 0 0;
+    border: 0 0;
   }
 
   .nextButton {
     border-radius: 0;
+    height: 100%;
+    border: 1px solid black;
+    margin: 0 0;
+    padding: 0 0;
+    border: 0 0;
   }
 }
