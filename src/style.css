@@ -239,3 +239,9 @@ textarea {
     display: none;
   }
 }
+
+@media (max-width: 300px) {
+  .panel {
+    display: none;
+  }
+}
