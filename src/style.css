@@ -72,22 +72,29 @@ button {
   background-color: rgba(62, 62, 62, 0.8);
   border: 2px solid black;
   border-radius: 20px;
-  height: 100%;
-  width: 300px;
+  height: 400px;
+  width: 320px;
   text-align: center;
-  /*overflow: hidden;
-  overflow-y: scroll;*/
+  overflow: hidden;
+  overflow-y: auto;
 }
 
 .panelPage {
   display: none;
+  flex-direction: column;
+  align-items: center;
 }
 
 .panelPage h1 {
   padding: 10px 10px;
 }
 
-.panelPage p {
+.panelPage h3 {
+  padding-top: 10px;
+  padding-bottom: 0;
+}
+
+.panelPage > p {
   padding: 10px 10px;
   padding-bottom: 20px;
 }
@@ -171,9 +178,61 @@ button {
   z-index: 1000; /* Ensure it's on top */
 }
 
+.skillbar {
+  width: 100%;
+  max-width: 200px;
+  padding: 5px 10px;
+  text-align: left;
+}
+
+.skillbar-name {
+  color: white;
+}
+
+.skill-background {
+  background-color: gainsboro;
+  height: 6px;
+  width: 100%;
+  border-radius: 3px;
+}
+
+li {
+  padding-bottom: 10px;
+}
+
+.skill-percent {
+  height: 6px;
+  background-color: crimson;
+  border-radius: 3px;
+}
+
+textarea {
+  resize: none;
+  font-family: ChakraPetch;
+  margin-top: 15px;
+  background-color: lightgray;
+  border-radius: 10px;
+  height: 160px;
+}
+
 .queryPanel {
 
 }
+
+::-webkit-scrollbar {
+  background-color: transparent;
+  width: 15px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: silver;
+  border-radius: 10px;
+  border: 5px solid transparent;
+  background-clip: padding-box;
+  border-top: 15px solid transparent;
+  border-bottom: 15px solid transparent;
+}
+
 
 @media (max-width: 750px) {
   #buttonPanel {

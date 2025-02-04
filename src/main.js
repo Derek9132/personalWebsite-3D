@@ -27,7 +27,6 @@ const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
 //camera.position.set(0, 0, 0);
 
-// uses camera to render the scene
 const renderer = new THREE.WebGLRenderer({
   canvas: document.getElementById("bg"),
   antialias: true,
@@ -377,6 +376,12 @@ for (let i = 0; i < 6; i++) {
 
   angleSum += (Math.PI * 2) / 6;
 }
+
+panels.forEach((element) => {
+  element.addEventListener("wheel", (event) => {
+    event.stopPropagation();
+  });
+});
 
 //connect(rocketButtonsList[0], rocketButtonsList[1], "white", "2px");
 

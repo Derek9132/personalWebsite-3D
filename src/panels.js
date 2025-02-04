@@ -10,7 +10,7 @@ $(function() {
         console.log(current, next);
         if (next.length) {
             current.hide();
-            next.show();
+            next.css("display", "flex");
         }
         else {
             console.log("error");
@@ -22,7 +22,7 @@ $(function() {
     let previous = current.prev(".panelPage");
     if (previous.length) {
         current.hide();
-        previous.show();
+        previous.css("display", "flex");
     }
     });
 
