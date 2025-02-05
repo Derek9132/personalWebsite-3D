@@ -469,9 +469,11 @@
       <div class="panelContent">
         <div class="panelPage">
           <h1>Contact Me</h1>
-          <form style="text-align: center; padding: 5px 15px; display: flex; flex-direction: column; align-items: center;" name="contactForm" method="POST" data-netlify="true">
-            <label style="padding: 5px 10px;" for="contact">Tell me anything! Give me suggestions for new website features or projects, point out flaws, ask questions, or if you're feeling generous, I'd be truly grateful for a compliment.</label>
+          <form style="text-align: center; padding: 5px 15px; display: flex; flex-direction: column; align-items: center;" name="contactForm" netlify>
+            <input type="hidden" name="form-name" value="contactForm">
+            <label style="padding: 5px 10px;" for="contact">Tell me anything! Give me suggestions for new website features or projects, point out flaws, ask questions, or if you're feeling generous, I'd be truly grateful for a compliment.
             <textarea id="contact" name="contact"></textarea>
+            </label>
             <button id="submit">Send</button>
           </form>
         </div>
