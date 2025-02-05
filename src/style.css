@@ -43,10 +43,14 @@ main {
   width: 100vw;
 }
 
+p > a {
+  padding: 0px 0px;
+}
+
 a {
   color: white;
   text-decoration: none;
-  padding-bottom: 30px;
+  padding: 10px 10px;
 }
 
 .panel {
@@ -235,6 +239,8 @@ form > button:hover {
 
 .pageVideo {
   border: 4px solid rgb(108, 108, 108);
+  width: 250px;
+  margin: 10px 10px;
 }
 
 ::-webkit-scrollbar {
