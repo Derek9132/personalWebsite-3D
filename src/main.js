@@ -409,7 +409,7 @@ let cameraAngle = 0;
 const cameraOffset = 20;
 let spinAngle = 0;
 
-const speed = 0.02; 
+const speed = 0.06; 
 
 let xTarget = 0;
 let zTarget = 0;
@@ -488,7 +488,7 @@ function animate() {
   //angle %= 2 * Math.PI;
 
   if (isMoving) {
-    angle += 0.02; 
+    angle += speed; 
     angle %= 2 * Math.PI;
 
     rocket.position.x = centerX + radiusX * Math.cos(angle);
