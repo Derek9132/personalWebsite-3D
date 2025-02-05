@@ -210,7 +210,7 @@
             <br>
             GPA: 3.60
           </p>
-          <p style="padding-bottom: 0px;">
+          <p>
             Relevant Courses:
           </p>
           <ul>
@@ -220,6 +220,7 @@
             <li>Web Programming</li>
             <li>Computer Graphics</li>
             <li>Intro to Game Development</li>
+            <li>Reinforcement Learning</li>
           </ul>
           <p>Transcript Download: <a style="text-decoration: underline;" href="src/resources/download content/transcript_unofficial.pdf" download="transcript">Click Here</a></p>
         </div>
@@ -232,6 +233,7 @@
         <div class="panelPage">
           <h1>Work Experience: Content Data Specialist Intern</h1>
           <p>Organization: Tesla Goverment</p>
+          <img src="src/resources/images/unnamed.jpg" width="80px" style="padding-bottom: 10px;">
           <p>Location: Falls Church, VA</p>
           <p>Dates: June 1st, 2023 - August 25th, 2023</p>
           <p>Job Type: Temporary Internship</p>
@@ -247,11 +249,13 @@
         </div>
 
         <div class="panelPage">
-          <h1>Work Experience: Content Data Specialist Intern</h1>
+          <h1>Work Experience: Data Intern</h1>
           <p>Organization: MacDowell Law Group</p>
+          <img src="src/resources/images/macdowell.png" width="150px" style="padding-bottom: 10px;">
           <p>Location: Fairfax, VA</p>
           <p>Dates: August 5th, 2024 - September 10th, 2024</p>
           <p>Job Type: Temporary Internship</p>
+          <p>Reference: Richard F MacDowell @ 7032772811</p>
           <p>Responsibilities & Achievements</p>
           <ul>
             <li>Used natural language processing and regular expressions in python to reformat large excel spreadsheets of client data</li>
@@ -281,14 +285,23 @@
 
         <div class="panelPage">
           <h1>Java GUI Memory Game</h1>
+          <p>This card-flipping GUI memory game made using Java was the culmination of the object oriented programming concepts 
+            and model-view-controller software architecture that I learned in my Intro to Software Development course. 
+          </p>
+          <video controls class="pageVideo" width="250px">
+            <source src="src/resources/videos/Csci301memory.mp4" type="video/mp4">
+            <source src="src/resources/videos/Csci301memory.mp4" type="video/ogg">
+          </video>
         </div>
 
         <div class="panelPage">
           <h1>Penetration Testing Labs</h1>
+          <p>In my cybersecurity class, I had the opportunity to </p>
         </div>
 
         <div class="panelPage">
           <h1>Web Programming Group Project</h1>
+          <p></p>
         </div>
 
         <div class="panelPage">
@@ -325,9 +338,10 @@
       <div class="panelContent">
         <div class="panelPage">
           <h1>Contact Me</h1>
-          <form style="text-align: center; padding: 5px 15px; display: flex; flex-direction: column;" name="contactForm" method="POST" data-netlify="true">
+          <form style="text-align: center; padding: 5px 15px; display: flex; flex-direction: column; align-items: center;" name="contactForm" method="POST" data-netlify="true">
             <label style="padding: 5px 10px;" for="contact">Tell me anything! Give me suggestions for new website features or projects, point out flaws, ask questions, or if you're feeling generous, I'd be truly grateful for a compliment.</label>
             <textarea id="contact" name="contact"></textarea>
+            <button id="submit">Send</button>
           </form>
         </div>
       </div>

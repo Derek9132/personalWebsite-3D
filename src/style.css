@@ -218,11 +218,23 @@ textarea {
   margin-top: 15px;
   background-color: lightgray;
   border-radius: 10px;
-  height: 160px;
+  height: 140px;
+  width: 100%;
 }
 
-.queryPanel {
+form > button {
+  margin-top: 10px; 
+  width: 30%; 
+  background-color: azure; 
+  border-radius: 10px;
+}
 
+form > button:hover {
+  background-color: rgb(186, 216, 216);
+}
+
+.pageVideo {
+  border: 4px solid rgb(108, 108, 108);
 }
 
 ::-webkit-scrollbar {
