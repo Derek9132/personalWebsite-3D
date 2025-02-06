@@ -409,7 +409,7 @@ let cameraAngle = 0;
 const cameraOffset = 20;
 let spinAngle = 0;
 
-const speed = 0.035; 
+const speed = 0.02; 
 
 let xTarget = 0;
 let zTarget = 0;
@@ -522,7 +522,7 @@ function animate() {
   const spinQuaternion = new THREE.Quaternion();
   spinQuaternion.setFromAxisAngle(new THREE.Vector3(0, 1, 0), spinAngle); 
 
-  spinAngle += 0.035;
+  spinAngle += 0.02;
 
   rocket.quaternion.copy(initialQuaternion);
   rocket.quaternion.multiply(pathQuaternion);
@@ -536,7 +536,7 @@ function animate() {
 
   camera.lookAt(rocket.position);
 
-  sun.rotation.y += 0.025;
+  sun.rotation.y += 0.01;
 
   ring2.rotation.y = angle * 2.2;
   ring2.rotation.x = angle * 1;
